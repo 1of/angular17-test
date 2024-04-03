@@ -1,0 +1,20 @@
+.example-card {
+  max-width: 200px;
+  height: 200px;
+  margin: 2px;
+}
+.card-content, .card-title {
+  color: #ffffff;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.card-content {
+  line-height: 2.5;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+.card-title {
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}

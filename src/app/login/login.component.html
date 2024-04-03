@@ -1,0 +1,29 @@
+<form class="example-form" (submit)="login()">
+  Login Store User: {{loggedInUser$ | async}}<br>
+  Login Store isLoggedIn: {{isLoggedIn$ | async}}<br>
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+    @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+    <mat-error>Please enter a valid email address</mat-error>
+    }
+    @if (emailFormControl.hasError('required')) {
+    <mat-error>Email is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <br>
+  <mat-form-field class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input [type]="toggleType ? 'text' : 'password'" matInput [formControl]="passwordFormControl" placeholder="*******">
+    @if (passwordFormControl.hasError('minlength') && !passwordFormControl.hasError('required')) {
+    <mat-error>Minimum 6 symbols</mat-error>
+    }
+    @if (passwordFormControl.hasError('required')) {
+    <mat-error>Email is <strong>required</strong></mat-error>
+    }
+  </mat-form-field>
+  <button (click)="toggleType = !toggleType" type="button" ><mat-icon inline>visibility</mat-icon></button>
+  <br>
+  <button type="submit" mat-flat-button>Submit</button>
+</form>
+<button type="button" (click)="logout()" *ngIf="isLoggedIn$ | async" mat-flat-button>Logout</button>
